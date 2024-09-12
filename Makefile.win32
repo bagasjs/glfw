@@ -1,0 +1,71 @@
+CC = clang
+CFLAGS = -Wall -Wextra -pedantic -Oz -D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS
+AR = llvm-ar
+BUILD_DIR = build
+OBJECTS=$(BUILD_DIR)/context.o $(BUILD_DIR)/init.o $(BUILD_DIR)/input.o $(BUILD_DIR)/monitor.o $(BUILD_DIR)/platform.o $(BUILD_DIR)/vulkan.o $(BUILD_DIR)/window.o $(BUILD_DIR)/wgl_context.o $(BUILD_DIR)/win32_init.o $(BUILD_DIR)/win32_joystick.o $(BUILD_DIR)/win32_module.o $(BUILD_DIR)/win32_monitor.o $(BUILD_DIR)/win32_thread.o $(BUILD_DIR)/win32_time.o $(BUILD_DIR)/win32_window.o $(BUILD_DIR)/null_init.o $(BUILD_DIR)/null_joystick.o $(BUILD_DIR)/null_monitor.o $(BUILD_DIR)/null_window.o $(BUILD_DIR)/egl_context.o 
+
+$(BUILD_DIR)/libglfw.a: $(OBJECTS)
+	$(AR) -rcs $@ $^
+	@echo "The static library could be found at './build/libglfw'"
+
+
+$(BUILD_DIR)/context.o: ./src/context.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/init.o: ./src/init.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/input.o: ./src/input.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/monitor.o: ./src/monitor.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/platform.o: ./src/platform.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/vulkan.o: ./src/vulkan.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/window.o: ./src/window.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/wgl_context.o: ./src/wgl_context.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_init.o: ./src/win32_init.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_joystick.o: ./src/win32_joystick.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_module.o: ./src/win32_module.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_monitor.o: ./src/win32_monitor.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_thread.o: ./src/win32_thread.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_time.o: ./src/win32_time.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/win32_window.o: ./src/win32_window.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/null_init.o: ./src/null_init.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/null_joystick.o: ./src/null_joystick.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/null_monitor.o: ./src/null_monitor.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/null_window.o: ./src/null_window.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(BUILD_DIR)/egl_context.o: ./src/egl_context.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
